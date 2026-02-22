@@ -4,22 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papiweb | Auditoría de Seguridad & Desarrollo de APIs</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         @import url('https://fonts.googleapis.com');
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
         .code-font { font-family: 'Fira Code', monospace; }
         .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card-glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+
+        /* ✅ MEJORA: Efecto 3D LED Dinámico adaptado a tu barra de navegación */
+        .brand-led {
+            display: inline-flex;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .brand-led span {
+            color: #1e293b; /* Color apagado que se funde con tu fondo */
+            text-shadow: 1px 1px 0px #020617;
+            animation: ledShine 2.5s infinite;
+            animation-delay: calc(0.15s * var(--i));
+            transition: all 0.3s;
+        }
+        @keyframes ledShine {
+            0%, 100% {
+                color: #1e293b;
+                text-shadow: 1px 1px 0px #020617;
+                transform: translateY(0);
+            }
+            50% {
+                color: #38bdf8; /* Neon Sky */
+                text-shadow: 
+                    0 0 5px #38bdf8,
+                    0 0 15px #0ea5e9,
+                    0 0 30px #0284c7;
+                transform: translateY(-2px); 
+            }
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased flex flex-col min-h-screen">
 
-    <!-- Navegación -->
     <nav class="p-6 border-b border-slate-800 flex justify-between items-center sticky top-0 bg-[#0f172a]/95 z-50">
-        <div class="text-2xl font-bold tracking-tighter">
-            <span class="text-sky-400">Papiweb</span> <span class="text-slate-400 text-sm font-light">Desarrollos Informáticos</span>
+        <div class="text-2xl font-bold tracking-tighter flex items-center gap-2">
+            <div class="brand-led" aria-label="Papiweb" role="img">
+                <span style="--i:1">P</span>
+                <span style="--i:2">a</span>
+                <span style="--i:3">p</span>
+                <span style="--i:4">i</span>
+                <span style="--i:5">w</span>
+                <span style="--i:6">e</span>
+                <span style="--i:7">b</span>
+            </div>
+            <span class="text-slate-400 text-sm font-light">Desarrollos Informáticos</span>
         </div>
         <div class="space-x-6 text-sm font-medium hidden md:block">
             <a href="#vision" class="hover:text-sky-400 transition">Visión</a>
@@ -29,199 +70,242 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="py-20 px-6 text-center max-w-4xl mx-auto">
-        <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-            Auditoría de Seguridad <br><span class="gradient-text text-4xl md:text-6xl">Consciente & No Invasiva</span>
-        </h1>
-        <p class="text-slate-400 text-lg mb-8">
-            Protegemos el puente que tus desarrolladores construyeron. Expertos en seguridad de APIs y WebSockets con herramientas de alto rendimiento en <span class="text-orange-400">Rust</span> y <span class="text-blue-400">Python</span>.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <div class="px-4 py-2 card-glass rounded-full text-xs code-font text-sky-400 border-sky-500/30">#SecurityConscious</div>
-            <div class="px-4 py-2 card-glass rounded-full text-xs code-font text-orange-400 border-orange-500/30">#RustHighPerformance</div>
-            <div class="px-4 py-2 card-glass rounded-full text-xs code-font text-blue-400 border-blue-500/30">#PythonAutomation</div>
-        </div>
-    </header>
+    <main class="flex-grow">
+        <header class="py-20 px-6 text-center max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                Auditoría de Seguridad <br><span class="gradient-text text-4xl md:text-6xl">Consciente & No Invasiva</span>
+            </h1>
+            <p class="text-slate-400 text-lg mb-8">
+                Protegemos el puente que tus desarrolladores construyeron. Expertos en seguridad de APIs y WebSockets con herramientas de alto rendimiento en <span class="text-orange-400">Rust</span> y <span class="text-blue-400">Python</span>.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="px-4 py-2 card-glass rounded-full text-xs code-font text-sky-400 border-sky-500/30">#SecurityConscious</div>
+                <div class="px-4 py-2 card-glass rounded-full text-xs code-font text-orange-400 border-orange-500/30">#RustHighPerformance</div>
+                <div class="px-4 py-2 card-glass rounded-full text-xs code-font text-blue-400 border-blue-500/30">#PythonAutomation</div>
+            </div>
+        </header>
 
-    <!-- Visión Seccion -->
-    <section id="vision" class="py-16 px-6 bg-slate-900/50">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold mb-6">Respeto por el Código</h2>
-                    <p class="text-slate-400 leading-relaxed mb-4">
-                        En <span class="font-bold text-white">Papiweb</span> sabemos que una API es el resultado de meses de trabajo. Por eso, nuestra metodología evita el "stress profundo" indiscriminado.
-                    </p>
-                    <p class="text-slate-400 leading-relaxed">
-                        Auditamos bajo el principio de <strong>integridad sistémica</strong>: detectamos fallos de lógica y seguridad sin comprometer la latencia de sus servicios activos.
-                    </p>
-                </div>
-                <div class="card-glass p-8 rounded-2xl border-l-4 border-sky-500">
-                    <i class="fa-solid fa-microchip text-4xl text-sky-500 mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Filosofía "Shift-Left"</h3>
-                    <p class="text-sm text-slate-500 italic">"No solo rompemos para demostrar fallos; auditamos para fortalecer puentes."</p>
+        <section id="vision" class="py-16 px-6 bg-slate-900/50">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6">Respeto por el Código</h2>
+                        <p class="text-slate-400 leading-relaxed mb-4">
+                            En <span class="font-bold text-white">Papiweb</span> sabemos que una API es el resultado de meses de trabajo. Por eso, nuestra metodología evita el "stress profundo" indiscriminado.
+                        </p>
+                        <p class="text-slate-400 leading-relaxed">
+                            Auditamos bajo el principio de <strong>integridad sistémica</strong>: detectamos fallos de lógica y seguridad sin comprometer la latencia de sus servicios activos.
+                        </p>
+                    </div>
+                    <div class="card-glass p-8 rounded-2xl border-l-4 border-sky-500">
+                        <i class="fa-solid fa-microchip text-4xl text-sky-500 mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Filosofía "Shift-Left"</h3>
+                        <p class="text-sm text-slate-500 italic">"No solo rompemos para demostrar fallos; auditamos para fortalecer puentes."</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Stack & Herramientas -->
-    <section id="herramientas" class="py-20 px-6 max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-16 italic">Ecosistema de Auditoría</h2>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Herramienta Rust -->
-            <div class="card-glass p-6 rounded-xl hover:translate-y-[-5px] transition duration-300">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="p-3 bg-orange-500/20 rounded-lg"><i class="fa-brands fa-rust text-orange-500 text-2xl"></i></div>
-                    <h3 class="font-bold">Músculo en Rust</h3>
-                </div>
-                <p class="text-sm text-slate-400 mb-4">CLI locales autónomas para análisis de logs y descubrimiento de rutas a ultra-velocidad sin dependencias externas.</p>
-                <code class="text-[10px] text-orange-300 bg-black/30 p-2 rounded block">cargo build --release</code>
-            </div>
-
-            <!-- Herramienta Python -->
-            <div class="card-glass p-6 rounded-xl hover:translate-y-[-5px] transition duration-300">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="p-3 bg-blue-500/20 rounded-lg"><i class="fa-brands fa-python text-blue-500 text-2xl"></i></div>
-                    <h3 class="font-bold">Cerebro en Python</h3>
-                </div>
-                <p class="text-sm text-slate-400 mb-4">Automatización de informes y orquestación de ataques controlados. Reportes visuales inmediatos con Rich API.</p>
-                <code class="text-[10px] text-blue-300 bg-black/30 p-2 rounded block">pip install papiweb-security</code>
-            </div>
-
-            <!-- Interfaz Visual -->
-            <div class="card-glass p-6 rounded-xl hover:translate-y-[-5px] transition duration-300 border-dashed border-sky-500/50">
-                <div class="flex items-center gap-3 mb-4">
-                    <div class="p-3 bg-sky-500/20 rounded-lg"><i class="fa-solid fa-terminal text-sky-500 text-2xl"></i></div>
-                    <h3 class="font-bold">CLI "Educado"</h3>
-                </div>
-                <p class="text-sm text-slate-400 mb-4">Interfaz profesional que monitorea la carga del servidor en tiempo real y frena automáticamente ante errores 429.</p>
-                <code class="text-[10px] text-sky-300 bg-black/30 p-2 rounded block">./papiweb_auditor --safe-mode</code>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Contacto -->
-    <footer id="contacto" class="py-20 px-6 border-t border-slate-800 text-center">
-        <h2 class="text-3xl font-bold mb-4 italic italic">Papiweb</h2>
-        <p class="text-slate-500 mb-8">Especialistas en unir seguridad y desarrollo de alta disponibilidad.</p>
-        <div class="flex justify-center space-x-6">
-            <a href="#" class="text-2xl hover:text-sky-400 transition"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="text-2xl hover:text-sky-400 transition"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:tu-email@papiweb.com" class="text-2xl hover:text-sky-400 transition"><i class="fa-solid fa-envelope"></i></a>
-        </div>
-        <p class="mt-12 text-[10px] text-slate-600 uppercase tracking-widest">© 2024 Papiweb Desarrollos Informáticos - Auditoría de Seguridad Consciente</p>
-        <!-- Paquetes de Auditoría Papiweb -->
-    <section id="precios" class="py-20 px-6 bg-slate-900/30">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 italic">Planes de Auditoría & Consultoría</h2>
-                <p class="text-slate-400">Soluciones escalables adaptadas al ciclo de vida de su desarrollo.</p>
-            </div>
-
+        <section id="herramientas" class="py-20 px-6 max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 italic">Ecosistema de Auditoría</h2>
+            
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Paquete Basic -->
-                <div class="card-glass p-8 rounded-2xl flex flex-col hover:border-sky-500/50 transition duration-300">
-                    <h3 class="text-xl font-bold mb-2">Diagnóstico Inicial</h3>
-                    <p class="text-sm text-slate-400 mb-6 italic italic italic">Ideal para Startups o MVPs en lanzamiento.</p>
-                    <ul class="text-sm space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Fuzzing de endpoints críticos.</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Verificación de secretos expuestos.</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Reporte ejecutivo en PDF.</li>
-                    </ul>
-                    <a href="#contacto" class="block w-full py-3 bg-slate-800 rounded-xl text-center font-bold hover:bg-slate-700 transition">Consultar presupuesto</a>
+                <div class="card-glass p-6 rounded-xl hover:translate-y-[-5px] transition duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-3 bg-orange-500/20 rounded-lg"><i class="fa-brands fa-rust text-orange-500 text-2xl"></i></div>
+                        <h3 class="font-bold">Músculo en Rust</h3>
+                    </div>
+                    
+                    <div class="relative w-full h-48 bg-black/40 rounded-xl border border-sky-500/30 overflow-hidden mb-6">
+                        <canvas id="papiWave" class="w-full h-full"></canvas>
+                        <div class="absolute top-2 left-3 text-[10px] code-font text-sky-400 uppercase tracking-widest animate-pulse">
+                            • Monitoring Network Traffic
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-slate-400 mb-4">CLI locales autónomas para análisis de logs y descubrimiento de rutas a ultra-velocidad sin dependencias externas.</p>
+                    <code class="text-[10px] text-orange-300 bg-black/30 p-2 rounded block">cargo build --release</code>
                 </div>
 
-                <!-- Paquete Advanced (Destacado) -->
-                <div class="card-glass p-8 rounded-2xl flex flex-col border-2 border-sky-500 relative transform md:scale-105 shadow-2xl shadow-sky-900/20">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-sky-500 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Recomendado</div>
-                    <h3 class="text-xl font-bold mb-2">Seguridad Full-Stack</h3>
-                    <p class="text-sm text-slate-400 mb-6 italic italic italic">Auditoría profunda para sistemas en producción.</p>
-                    <ul class="text-sm space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Análisis de WebSockets & Conexiones persistentes.</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Pentesting de lógica de negocio (BOLA).</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> <strong>CLI Tooling Local</strong> (Binario Rust incluido).</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Reunión de feedback con el equipo técnico.</li>
-                    </ul>
-                    <a href="#contacto" class="block w-full py-3 bg-sky-500 rounded-xl text-center font-bold hover:bg-sky-600 transition shadow-lg shadow-sky-500/30">Consultar presupuesto</a>
+                <div class="card-glass p-6 rounded-xl hover:translate-y-[-5px] transition duration-300">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-3 bg-blue-500/20 rounded-lg"><i class="fa-brands fa-python text-blue-500 text-2xl"></i></div>
+                        <h3 class="font-bold">Cerebro en Python</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-4">Automatización de informes y orquestación de ataques controlados. Reportes visuales inmediatos con Rich API.</p>
+                    <code class="text-[10px] text-blue-300 bg-black/30 p-2 rounded block">pip install papiweb-security</code>
                 </div>
 
-                <!-- Paquete Personalizado -->
-                <div class="card-glass p-8 rounded-2xl flex flex-col hover:border-sky-500/50 transition duration-300">
-                    <h3 class="text-xl font-bold mb-2">Asesoría Custom</h3>
-                    <p class="text-sm text-slate-400 mb-6 italic italic italic">Consultoría técnica de largo plazo.</p>
-                    <ul class="text-sm space-y-4 mb-8 flex-grow">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-star text-sky-400"></i> <strong>Asesoramiento Personalizado 1 a 1.</strong></li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Diseño de infraestructura segura desde cero.</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Auditoría continua (Mantenimiento preventivo).</li>
-                    </ul>
-                    <a href="#contacto" class="block w-full py-3 bg-slate-800 rounded-xl text-center font-bold hover:bg-slate-700 transition">Agendar llamada técnica</a>
+                <div class="card-glass p-6 rounded-xl hover:translate-y-[-5px] transition duration-300 border-dashed border-sky-500/50">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-3 bg-sky-500/20 rounded-lg"><i class="fa-solid fa-terminal text-sky-500 text-2xl"></i></div>
+                        <h3 class="font-bold">CLI "Educado"</h3>
+                    </div>
+                    <p class="text-sm text-slate-400 mb-4">Interfaz profesional que monitorea la carga del servidor en tiempo real y frena automáticamente ante errores 429.</p>
+                    <code class="text-[10px] text-sky-300 bg-black/30 p-2 rounded block">./papiweb_auditor --safe-mode</code>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-12 p-6 card-glass rounded-xl text-center border-dashed border-slate-600">
-                <p class="text-slate-400 text-sm">
-                    <i class="fa-solid fa-info-circle mr-2"></i> Todos los servicios incluyen un <strong>análisis previo de impacto</strong> para garantizar la disponibilidad del servicio durante la auditoría.
-                </p>
+        <section id="precios" class="py-20 px-6 bg-slate-900/30">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4 italic">Planes de Auditoría & Consultoría</h2>
+                    <p class="text-slate-400">Soluciones escalables adaptadas al ciclo de vida de su desarrollo.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-glass p-8 rounded-2xl flex flex-col hover:border-sky-500/50 transition duration-300">
+                        <h3 class="text-xl font-bold mb-2">Diagnóstico Inicial</h3>
+                        <p class="text-sm text-slate-400 mb-6 italic">Ideal para Startups o MVPs en lanzamiento.</p>
+                        <ul class="text-sm space-y-4 mb-8 flex-grow">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Fuzzing de endpoints críticos.</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Verificación de secretos expuestos.</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Reporte ejecutivo en PDF.</li>
+                        </ul>
+                        <a href="#contacto" class="block w-full py-3 bg-slate-800 rounded-xl text-center font-bold hover:bg-slate-700 transition">Consultar presupuesto</a>
+                    </div>
+
+                    <div class="card-glass p-8 rounded-2xl flex flex-col border-2 border-sky-500 relative transform md:scale-105 shadow-2xl shadow-sky-900/20">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-sky-500 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Recomendado</div>
+                        <h3 class="text-xl font-bold mb-2">Seguridad Full-Stack</h3>
+                        <p class="text-sm text-slate-400 mb-6 italic">Auditoría profunda para sistemas en producción.</p>
+                        <ul class="text-sm space-y-4 mb-8 flex-grow">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Análisis de WebSockets & Conexiones persistentes.</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Pentesting de lógica de negocio (BOLA).</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> <strong>CLI Tooling Local</strong> (Binario Rust incluido).</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Reunión de feedback con el equipo técnico.</li>
+                        </ul>
+                        <a href="#contacto" class="block w-full py-3 bg-sky-500 rounded-xl text-center font-bold hover:bg-sky-600 transition shadow-lg shadow-sky-500/30">Consultar presupuesto</a>
+                    </div>
+
+                    <div class="card-glass p-8 rounded-2xl flex flex-col hover:border-sky-500/50 transition duration-300">
+                        <h3 class="text-xl font-bold mb-2">Asesoría Custom</h3>
+                        <p class="text-sm text-slate-400 mb-6 italic">Consultoría técnica de largo plazo.</p>
+                        <ul class="text-sm space-y-4 mb-8 flex-grow">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-star text-sky-400"></i> <strong>Asesoramiento Personalizado 1 a 1.</strong></li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Diseño de infraestructura segura desde cero.</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sky-400"></i> Auditoría continua (Mantenimiento preventivo).</li>
+                        </ul>
+                        <a href="#contacto" class="block w-full py-3 bg-slate-800 rounded-xl text-center font-bold hover:bg-slate-700 transition">Agendar llamada técnica</a>
+                    </div>
+                </div>
+
+                <div class="mt-12 p-6 card-glass rounded-xl text-center border-dashed border-slate-600">
+                    <p class="text-slate-400 text-sm">
+                        <i class="fa-solid fa-info-circle mr-2"></i> Todos los servicios incluyen un <strong>análisis previo de impacto</strong> para garantizar la disponibilidad del servicio durante la auditoría.
+                    </p>
+                </div>
             </div>
-        </div>
-    </section>
-<!-- Sección de Contacto Papiweb -->
-<section id="contacto" class="py-20 px-6 bg-slate-900">
-    <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold mb-4">Iniciar Auditoría</h2>
-            <p class="text-slate-400 italic">Solicite un presupuesto o agende una consulta técnica personalizada.</p>
-        </div>
+        </section>
 
-        <div class="card-glass p-8 rounded-2xl border-t-4 border-sky-500">
-            <!-- Formulario conectado a Formspree -->
-            <form action="https://formspree.io" method="POST" class="space-y-6">
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Nombre / Empresa</label>
-                        <input type="text" name="name" required placeholder="Ej: Tech Solutions S.A." 
-                               class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Email de Contacto</label>
-                        <input type="email" name="email" required placeholder="director@empresa.com" 
-                               class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition">
-                    </div>
+        <section id="contacto" class="py-20 px-6 bg-slate-900">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">Iniciar Auditoría</h2>
+                    <p class="text-slate-400 italic">Solicite un presupuesto o agende una consulta técnica personalizada.</p>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Tipo de Servicio</label>
-                    <select name="service" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition">
-                        <option value="diagnostico">Diagnóstico Inicial (Cero Invasivo)</option>
-                        <option value="full-stack">Seguridad Full-Stack (Auditoría Profunda)</option>
-                        <option value="custom">Asesoramiento Personalizado 1 a 1</option>
-                        <option value="herramienta-rust">Desarrollo de Herramientas CLI en Rust</option>
-                    </select>
+                <div class="card-glass p-8 rounded-2xl border-t-4 border-sky-500">
+                    <form action="https://formspree.io/f/TU_ID_AQUI" method="POST" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Nombre / Empresa</label>
+                                <input type="text" name="name" required placeholder="Ej: Tech Solutions S.A." 
+                                       class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Email de Contacto</label>
+                                <input type="email" name="email" required placeholder="director@empresa.com" 
+                                       class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Tipo de Servicio</label>
+                            <select name="service" class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition">
+                                <option value="diagnostico">Diagnóstico Inicial (Cero Invasivo)</option>
+                                <option value="full-stack">Seguridad Full-Stack (Auditoría Profunda)</option>
+                                <option value="custom">Asesoramiento Personalizado 1 a 1</option>
+                                <option value="herramienta-rust">Desarrollo de Herramientas CLI en Rust</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Detalles del Proyecto</label>
+                            <textarea name="message" rows="4" required placeholder="Cuéntenos sobre sus APIs, WebSockets o necesidades específicas de seguridad..." 
+                                      class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition"></textarea>
+                        </div>
+
+                        <input type="text" name="_gotcha" style="display:none">
+
+                        <button type="submit" 
+                                class="w-full py-4 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl shadow-lg shadow-sky-500/20 transition duration-300 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud de Auditoría
+                        </button>
+                    </form>
                 </div>
+            </div>
+        </section>
+    </main>
 
-                <div>
-                    <label class="block text-xs font-bold text-sky-400 uppercase mb-2 code-font">Detalles del Proyecto</label>
-                    <textarea name="message" rows="4" required placeholder="Cuéntenos sobre sus APIs, WebSockets o necesidades específicas de seguridad..." 
-                              class="w-full bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:outline-none focus:border-sky-500 transition"></textarea>
-                </div>
-
-                <!-- Campo oculto para evitar SPAM -->
-                <input type="text" name="_gotcha" style="display:none">
-
-                <button type="submit" 
-                        class="w-full py-4 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl shadow-lg shadow-sky-500/20 transition duration-300 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i> Enviar Solicitud de Auditoría
-                </button>
-            </form>
+    <footer class="py-10 px-6 border-t border-slate-800 text-center bg-[#0f172a]">
+        <h2 class="text-2xl font-bold mb-2 italic">Papiweb</h2>
+        <p class="text-slate-500 mb-6 text-sm">Especialistas en unir seguridad y desarrollo de alta disponibilidad.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="text-2xl text-slate-400 hover:text-sky-400 transition" aria-label="Visitar GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="text-2xl text-slate-400 hover:text-sky-400 transition" aria-label="Visitar LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:tu-email@papiweb.com" class="text-2xl text-slate-400 hover:text-sky-400 transition" aria-label="Enviar correo electrónico"><i class="fa-solid fa-envelope"></i></a>
         </div>
-    </div>
-</section>
-
+        <p class="mt-8 text-[10px] text-slate-600 uppercase tracking-widest">© 2024 Papiweb Desarrollos Informáticos - Auditoría de Seguridad Consciente</p>
     </footer>
 
+    <script>
+        const canvas = document.getElementById('papiWave');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, amplitude, frequency, speed = 0;
+
+        function resize() {
+            width = canvas.width = canvas.offsetWidth;
+            height = canvas.height = canvas.offsetHeight;
+            amplitude = height / 4; 
+            frequency = 0.02; 
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#38bdf8';
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#38bdf8';
+
+            ctx.moveTo(0, height / 2);
+
+            for (let x = 0; x < width; x++) {
+                const y = height / 2 + Math.sin(x * frequency + speed) * amplitude * Math.sin(speed * 0.5);
+                ctx.lineTo(x, y);
+            }
+
+            ctx.stroke();
+            
+            ctx.shadowBlur = 0;
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.1)';
+            ctx.lineWidth = 1;
+            for(let i=0; i<width; i+=40) {
+                ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke();
+            }
+
+            speed += 0.05; 
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
 </body>
 </html>
